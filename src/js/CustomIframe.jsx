@@ -38,11 +38,10 @@ export default class CustomIframe extends Component {
         let doc = frame.contentDocument
 
         doc.open()
-        console.log(this.props.html.includes("nuuls"));
         doc.write(this.props.html)
         doc.close()
 
-        frame.style.height = `${frame.contentWindow.document.body.scrollHeight}px`
+        frame.style.height = `calc(100vh - 50px)`
     }
 
     render() {
