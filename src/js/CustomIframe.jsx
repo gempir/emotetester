@@ -22,7 +22,7 @@ export default class CustomIframe extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.html != this.props.html) {
+        if (prevProps.html != this.props.html || prevProps.styles != this.props.styles) {
             this.writeHTML(this.iframe_ref)
         }
     }
@@ -38,7 +38,10 @@ export default class CustomIframe extends Component {
         let doc = frame.contentDocument
 
         doc.open()
-        doc.write(this.props.html)
+        doc.write(this.props.html);
+        for (const style of this.props.styles ?? []) {
+            doc.write(`<style>${style}</style>`);
+        }
         doc.close()
 
         frame.style.height = `calc(100vh - 50px)`
