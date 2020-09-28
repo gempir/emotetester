@@ -40,7 +40,7 @@ export default () => {
 			<form className="Upload" onSubmit={handleSubmit} action="">
 				<label>Your emote image url</label><br />
 				<input type="text" name="emoteUrl" placeholder="https://i.nuuls.com/E7e0v.png" defaultValue={replacementPhrase !== emoteUrl ? emoteUrl : null} required/>
-				<label><input type="checkbox" name="resize" /> resize</label>
+				<label><input type="checkbox" name="resize" defaultValue={resize} /> resize</label>
 				<button>Update</button>
 			</form>
 			<CustomIframe html={chatDark.replace(replacementPhrase, emoteUrl)} styles={styles} />
