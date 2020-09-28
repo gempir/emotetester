@@ -8,7 +8,7 @@ const replacementPhrase = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAA
 export default () => {
 	const url = new URL(window.location.href)
 
-	const [emoteUrl, setEmoteUrl] = useState(url.searchParams.get("emoteUrl")?.replace('"', "'") ?? replacementPhrase);
+	const [emoteUrl, setEmoteUrl] = useState(url.searchParams.get("emoteUrl")?.replace('"', "").replace(">", "") ?? replacementPhrase);
 	const [resize, setResize] = useState(url.searchParams.get("resize") === "1");
 
 	const chatDark = ChatDark.replace(/srcset="[^"]+"/g, "");
